@@ -1,0 +1,117 @@
+/* Application de la police globale */
+@import "tailwindcss";
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+/* Styles pour l'élément menu-icon */
+#menu-icon {
+    width: 45px;
+    height: 50px;
+    color: black;
+}
+
+#product-choose {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: large;
+}
+
+/* Espacement global pour les titres (mobile par défaut) */
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: -4px;
+    /* Espacement pour mobile (par défaut) */
+}
+
+/* Styles pour l'élément play-video */
+#play-video {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    font-size: large;
+}
+
+/* Styles pour l'élément product-choose2 */
+#product-choose2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: large;
+    margin-bottom: 25px;
+}
+
+/* styles pour l'élément apple-watch */
+#apple-watch {
+    width: 300px;
+    height: auto;
+}
+
+/* Espacement pour les très grands écrans (moniteurs 4K) */
+@media (min-width: 1280px) {
+    h2 {
+        letter-spacing: -7px;
+        /* Plus épais pour les très grands écrans */
+    }
+}
+
+/* Espacement pour les grands écrans (desktop) */
+@media (min-width: 1024px) {
+    h2 {
+        letter-spacing: -6px;
+        /* Large pour les écrans desktop */
+    }
+}
+
+/* Espacement pour les écrans moyens (tablette en paysage, petit laptop) */
+@media (min-width: 768px) {
+    h2 {
+        letter-spacing: -7px;
+        /* Moyen pour les écrans moyens */
+    }
+
+    #play-video {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+        transition: background-color 0.3s ease;
+        font-size: 200%;
+        letter-spacing: 0.5px
+    }
+
+    #apple-watch {
+        width: 350px;
+        height: auto;
+    }
+}
+
+/* Styles spécifiques pour les paragraphes */
+p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    letter-spacing: -0.5px;
+    /* Espacement normal pour les paragraphes */
+}
+
+/* Styles spécifiques pour les liens */
+a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    letter-spacing: -1px;
+    /* Légèrement réduit pour les liens */
+}
+
+/* styles pour l'élément play-icon */
+#play-icon {
+    width: 40px;
+    height: 40px;
+}
+
+/* styles pour l'élément table */
+/* Masque pour masquer le fond gris */
+#table {
+    font-size: medium;
+    mask-image: radial-gradient(circle, rgba(255, 255, 255, 1) 60%, rgba(0, 0, 0, 1) 100%);
+    -webkit-mask-image: radial-gradient(circle, rgba(255, 255, 255, 1) 60%, rgba(0, 0, 0, 1) 100%);
+}
