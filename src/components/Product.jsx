@@ -1,11 +1,11 @@
 export default function Product() {
     return (
-        <section id="product" className="py-80 bg-white">
+        <section id="product" className="md:py-27 py-35 bg-white">
             <div className="container mx-auto text-center">
                 {/* Header Section */}
                 <div className="section-header mb-10">
-                    <h2 className="text-6xl text-gray-700 font-semibold mb-5">THE PRODUCT</h2>
-                    <p className="text-2xl text-gray-400 mb-4">
+                    <h2 className="text-6xl text-gray-700 font-semibold mb-6">THE PRODUCT</h2>
+                    <p id="description" className="text-2xl text-gray-400 md:mb-35 mb-25">
                         Introduce the product here. A small description about what it is and <br />how it helps the user.
                         You can also add some photos below.
                     </p>
@@ -13,7 +13,7 @@ export default function Product() {
 
                 {/* Product Features */}
                 <div className="relative text-center">
-                    <img src="/images/apple-watch-2.png" alt="Product" className="mx-auto mb-6" />
+                    <img id="apple-watch2" src="/images/apple-watch-2.png" alt="Product" className="mx-auto mb-8" />
 
                     {/* Feature Notes */}
                     <div className="absolute top-12 left-16 transform -translate-x-1/2 -translate-y-1/2">

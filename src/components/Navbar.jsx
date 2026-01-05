@@ -13,14 +13,14 @@ export default function Navbar() {
                 </a>
 
                 {/* Menu Desktop */}
-                <ul className="hidden md:flex space-x-10 text-gray-400 text-lg">
-                    <li><a href="#product" className="hover:text-gray-700">PRODUCT</a></li>
-                    <li><a href="#features" className="hover:text-gray-700">FEATURES</a></li>
-                    <li><a href="#reviews" className="hover:text-gray-700">REVIEWS</a></li>
+                <ul className="hidden md:flex space-x-10 text-gray-400 text-lg ">
+                    <li><a href="#product" className="hover:text-blue-500">PRODUCT</a></li>
+                    <li><a href="#features" className="hover:text-blue-500">FEATURES</a></li>
+                    <li><a href="#reviews" className="hover:text-blue-500">REVIEWS</a></li>
 
                     {/* Dropdown "PAGES" */}
                     <li className="relative">
-                        <a href="#" className="hover:text-gray-700">PAGES</a>
+                        <a href="#" className="hover:text-blue-500">PAGES</a>
                         <ul className={`absolute ${isMenuOpen ? 'block' : 'hidden'} bg-white text-gray-700 shadow-lg mt-2 rounded-md w-48`}>
                             {/* Same list items here */}
                             <li><a href="https://demo.web3canvas.com/themeforest/proland/index.html#" className="block px-4 py-2 hover:bg-gray-100">Pre-order (Email)</a></li>
@@ -39,7 +39,7 @@ export default function Navbar() {
                             <li><a href="https://demo.web3canvas.com/themeforest/proland/shortcodes.html" className="block px-4 py-2 hover:bg-gray-100">Shortcodes</a></li>
                         </ul>
                     </li>
-                    <li><a href="#contact" className="hover:text-gray-700">CONTACT</a></li>
+                    <li><a href="#contact" className="hover:text-blue-500">CONTACT</a></li>
                 </ul>
 
                 {/* Call to Action */}

@@ -5,7 +5,7 @@ export default function Hero() {
             className="min-h-[120vh] flex flex-col items-center text-center bg-gray-100 lg:pt-60 pt-40 px-4"
         >
             {/* TITRE */}
-            <h2 className="
+            <h2 id="hero" className="
                 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl
                 text-gray-800 font-bold mb-6 opacity-90 
             ">
