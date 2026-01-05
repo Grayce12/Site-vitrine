@@ -1,3 +1,6 @@
+import { SlArrowRight } from "react-icons/sl";
+
+
 export default function HowItWorks() {
     return (
         <section id="how-it-works" className="md:py-30 bg-gray-50">
@@ -15,6 +18,7 @@ export default function HowItWorks() {
                     {/* Process 1 */}
                     <div className="work-process text-center">
                         <img src="/images/desktop.png" alt="Connect Device" className="mx-auto mb-17" />
+                        <SlArrowRight />
                         <h3 className="text-3xl text-gray-700 font-semibold mb-1">Connect Device</h3>
                         <p className="text-xl text-gray-400">Lorem ipsum dolor sit amet, consectetur de <br /> elit, sed do tempor incididunt ut labore eta <br />rehenderit in voluptate velit.</p>
                     </div>
