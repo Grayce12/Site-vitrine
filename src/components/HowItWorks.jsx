@@ -7,36 +7,55 @@ export default function HowItWorks() {
             <div className="container mx-auto text-center">
                 {/* Section Header */}
                 <div className="section-header mb-20">
-                    <h2 className="text-6xl text-gray-800 font-semibold mb-4">HOW IT WORKS</h2>
-                    <p id="description" className="text-2xl text-gray-600 md:mb-30 mb-20">
+                    <h2 className="text-6xl text-gray-700 font-semibold mb-4">HOW IT WORKS</h2>
+                    <p id="description" className="text-2xl text-gray-600 md:mb-25 mb-20">
                         Everybody loves tech gadgets, but ours is different. Here is how it works. <br /> It's should simple and easy to use.
                     </p>
                 </div>
 
                 {/* Work Processes */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                <div className="flex items-start justify-center gap-3 md:gap-4">
                     {/* Process 1 */}
-                    <div className="work-process text-center">
-                        <img src="/images/desktop.png" alt="Connect Device" className="mx-auto mb-17" />
-                        <SlArrowRight />
+                    <div className="flex flex-col items-center text-center">
+                        <img src="/images/desktop.png" alt="Connect Device" className="mx-auto mb-15" id="icon" />
                         <h3 className="text-3xl text-gray-700 font-semibold mb-1">Connect Device</h3>
-                        <p className="text-xl text-gray-400">Lorem ipsum dolor sit amet, consectetur de <br /> elit, sed do tempor incididunt ut labore eta <br />rehenderit in voluptate velit.</p>
+                        <p className="text-lg text-gray-500">
+                            Lorem ipsum dolor sit amet, consectetur de <br />
+                            elit, sed do tempor incididunt ut labore eta <br />
+                            reprehenderit in voluptate velit.
+                        </p>
                     </div>
+
+                    {/* Arrow between images */}
+                    <SlArrowRight className="text-gray-400 text-4xl mt-10" id="arrow-right" />
 
                     {/* Process 2 */}
-                    <div className="work-process text-center">
-                        <img src="/images/toggles.png" alt="Configure" className="mx-auto mb-17" />
+                    <div className="flex flex-col items-center text-center">
+                        <img src="/images/toggles.png" alt="Configure" className="mx-auto mb-15" id="icon" />
                         <h3 className="text-3xl text-gray-700 font-semibold mb-1">Configure it</h3>
-                        <p className="text-xl text-gray-400">Lorem ipsum dolor sit amet, consectetur de <br /> elit, sed do tempor incididunt ut labore eta <br />rehenderit in voluptate velit.</p>
+                        <p className="text-lg text-gray-500">
+                            Lorem ipsum dolor sit amet, consectetur de <br />
+                            elit, sed do tempor incididunt ut labore eta <br />
+                            reprehenderit in voluptate velit.
+                        </p>
                     </div>
 
+                    {/* Arrow between images */}
+                    <SlArrowRight className="text-gray-400 text-4xl mt-10" id="arrow-right" />
+
                     {/* Process 3 */}
-                    <div className="work-process text-center">
-                        <img src="/images/trophy.png" alt="Done" className="mx-auto mb-17" />
+                    <div className="flex flex-col items-center text-center">
+                        <img src="/images/trophy.png" alt="Done" className="mx-auto mb-15" id="icon" />
                         <h3 className="text-3xl text-gray-700 font-semibold mb-1">Yay! Done.</h3>
-                        <p className="text-xl text-gray-400">Lorem ipsum dolor sit amet, consectetur de <br /> elit, sed do tempor incididunt ut labore eta <br />rehenderit in voluptate velit.</p>
+                        <p className="text-lg text-gray-500">
+                            Lorem ipsum dolor sit amet, consectetur de <br />
+                            elit, sed do tempor incididunt ut labore eta <br />
+                            reprehenderit in voluptate velit.
+                        </p>
                     </div>
                 </div>
+
+
             </div>
         </section>
     );

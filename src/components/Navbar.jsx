@@ -1,11 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    // Détecter le scroll pour changer le background
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 10) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
-        <header className="w-full fixed top-0 left-0 z-50 bg-transparent py-5 md:py-5 shadow-none transition-all duration-300">
-            <nav className="container mx-auto flex items-center justify-between py-5 px-2">
+        <header className={`w-full fixed top-0 left-0 z-60 py-3 md:py-3 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+            <nav className="container mx-auto flex items-center justify-between py-2 px-4 md:px-2">
 
                 {/* Logo */}
                 <a href="#header">
@@ -13,7 +27,7 @@ export default function Navbar() {
                 </a>
 
                 {/* Menu Desktop */}
-                <ul className="hidden md:flex space-x-10 text-gray-400 text-lg ">
+                <ul className="hidden md:flex space-x-8 text-gray-400 text-lg items-center">
                     <li><a href="#product" className="hover:text-blue-500">PRODUCT</a></li>
                     <li><a href="#features" className="hover:text-blue-500">FEATURES</a></li>
                     <li><a href="#reviews" className="hover:text-blue-500">REVIEWS</a></li>
@@ -21,8 +35,7 @@ export default function Navbar() {
                     {/* Dropdown "PAGES" */}
                     <li className="relative">
                         <a href="#" className="hover:text-blue-500">PAGES</a>
-                        <ul className={`absolute ${isMenuOpen ? 'block' : 'hidden'} bg-white text-gray-700 shadow-lg mt-2 rounded-md w-48`}>
-                            {/* Same list items here */}
+                        <ul className={`absolute top-full left-0 mt-2 bg-white text-gray-700 shadow-lg rounded-md w-48 ${isMenuOpen ? 'block' : 'hidden'}`}>
                             <li><a href="https://demo.web3canvas.com/themeforest/proland/index.html#" className="block px-4 py-2 hover:bg-gray-100">Pre-order (Email)</a></li>
                             <li><a href="https://demo.web3canvas.com/themeforest/proland/index_email.html" className="block px-4 py-2 hover:bg-gray-100">Email Signup (Mailchimp)</a></li>
                             <li><a href="https://demo.web3canvas.com/themeforest/proland/index_buy_paypal.html" className="block px-4 py-2 hover:bg-gray-100">Buy Now (PayPal)</a></li>
@@ -43,15 +56,46 @@ export default function Navbar() {
                 </ul>
 
                 {/* Call to Action */}
-                <a id="product-choose" href="#product-choose" className="hidden md:block bg-orange-500 text-white font-size-xl px-12 py-3 rounded-full hover:bg-gray-600 transition duration-300">
+                <a id="product-choose" href="#product-choose" className="hidden md:block bg-orange-500 text-white text-lg px-8 py-3 rounded-full hover:bg-gray-600 transition duration-300 ml-4">
                     PRE-ORDER NOW
                 </a>
 
                 {/* Burger menu mobile */}
-                <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                <button className="md:hidden ml-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     <img id="menu-icon" src="/images/menu-icon.png" alt="Menu Icon" className="mt-0" />
                 </button>
             </nav>
+
+            {/* Menu mobile */}
+            {isMenuOpen && (
+                <div className="md:hidden bg-white shadow-md w-full absolute top-full left-0 z-40">
+                    <ul className="flex flex-col space-y-2 p-4 text-gray-700">
+                        <li><a href="#product" className="block px-2 py-2 hover:bg-gray-100 rounded">PRODUCT</a></li>
+                        <li><a href="#features" className="block px-2 py-2 hover:bg-gray-100 rounded">FEATURES</a></li>
+                        <li><a href="#reviews" className="block px-2 py-2 hover:bg-gray-100 rounded">REVIEWS</a></li>
+                        <li>
+                            <a href="#" className="block px-2 py-2 hover:bg-gray-100 rounded">PAGES</a>
+                            <ul className="pl-4 mt-1 space-y-1">
+                                <li><a href="https://demo.web3canvas.com/themeforest/proland/index.html#" className="block px-2 py-1 hover:bg-gray-100 rounded">Pre-order (Email)</a></li>
+                                <li><a href="https://demo.web3canvas.com/themeforest/proland/index_email.html" className="block px-2 py-1 hover:bg-gray-100 rounded">Email Signup (Mailchimp)</a></li>
+                                <li><a href="https://demo.web3canvas.com/themeforest/proland/index_buy_paypal.html" className="block px-2 py-1 hover:bg-gray-100 rounded">Buy Now (PayPal)</a></li>
+                                <li><a href="https://demo.web3canvas.com/themeforest/proland/index_kickstarter.html" className="block px-2 py-1 hover:bg-gray-100 rounded">Kickstarter Campaign</a></li>
+                                <li><a href="https://demo.web3canvas.com/themeforest/proland/index_indegogo.html" className="block px-2 py-1 hover:bg-gray-100 rounded">Indegogo Campaign</a></li>
+                                <li><a href="https://demo.web3canvas.com/themeforest/proland/index_boxed.html" className="block px-2 py-1 hover:bg-gray-100 rounded">Boxed Version</a></li>
+                                <li><a href="https://demo.web3canvas.com/themeforest/proland/index_rtl.html" className="block px-2 py-1 hover:bg-gray-100 rounded">RTL Version</a></li>
+                                <li><a href="https://demo.web3canvas.com/themeforest/proland/index_video.html" className="block px-2 py-1 hover:bg-gray-100 rounded">Video Background</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#contact" className="block px-2 py-2 hover:bg-gray-100 rounded">CONTACT</a></li>
+                        <li>
+                            <a href="#product-choose" className="block bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-gray-600 transition duration-300 text-center">
+                                PRE-ORDER NOW
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            )}
         </header>
     );
 }
+

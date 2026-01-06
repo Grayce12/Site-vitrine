@@ -30,8 +30,6 @@ h2 {
     font-size: 17px;
 }
 
-
-
 /* Styles pour l'élément menu-icon */
 #menu-icon {
     width: 45px;
@@ -50,7 +48,8 @@ h2 {
 #hero {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    letter-spacing: -4px;
+    letter-spacing: -2px;
+    font-size: 35px;
     /* Espacement pour mobile (par défaut) */
 }
 
@@ -124,7 +123,7 @@ h2 {
 
     ul li a {
         font-family: 'Poppins', sans-serif;
-        font-weight: 500;
+        font-weight: 450;
         letter-spacing: 0px;
         /* Légèrement réduit pour les liens dans les listes */
     }
@@ -149,7 +148,10 @@ h2 {
     }
 
 
-
+   #arrow-right {
+        width: 40px;
+        height: 40px;
+    }
 
 
 }

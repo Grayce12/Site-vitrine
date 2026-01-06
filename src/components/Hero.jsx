@@ -2,7 +2,7 @@ export default function Hero() {
     return (
         <section
             id="header"
-            className="min-h-[120vh] flex flex-col items-center text-center bg-gray-100 lg:pt-60 pt-40 px-4"
+            className="min-h-[120vh] flex flex-col items-center text-center bg-gray-200 lg:pt-60 pt-30 px-4"
         >
             {/* TITRE */}
             <h2 id="hero" className="
@@ -16,7 +16,7 @@ export default function Hero() {
             <p className="
                 max-w-4xl
                 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl
-                text-gray-400 mb-10 
+                text-gray-500 mb-10 
             ">
                 Holistically incentivize revolutionary collaboration and idea
                 <br className="hidden sm:block" />
