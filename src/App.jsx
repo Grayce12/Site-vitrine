@@ -7,6 +7,9 @@ import Timeline from './components/Timeline';
 import Team from './components/Team';
 import SplitColumns from './components/SplitColumns';
 import Reviews from './components/Reviews';
+import LeftRightContent from "./components/LeftRightContent";
+import OurCollection from './components/OurCollection';
+
 
 function App() {
   return (
@@ -16,6 +19,8 @@ function App() {
       <Product />
       <HowItWorks />
       <Benefits />
+      <LeftRightContent />
+      <OurCollection />
       <Timeline />
       <Team />
       <SplitColumns />

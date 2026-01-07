@@ -18,7 +18,7 @@ export default function Navbar() {
     }, []);
 
     return (
-        <header className={`w-full fixed top-0 left-0 z-60 py-2 md:py-3 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+        <header className={`w-full fixed top-0 left-0 z-60 py-2 md:py-3 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
             <nav className="container mx-auto flex items-center justify-between py-2 px-4 md:px-2">
 
                 {/* Logo + Hamburger */}
