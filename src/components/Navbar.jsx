@@ -18,13 +18,16 @@ export default function Navbar() {
     }, []);
 
     return (
-        <header className={`w-full fixed top-0 left-0 z-60 py-3 md:py-3 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+        <header className={`w-full fixed top-0 left-0 z-60 py-2 md:py-3 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
             <nav className="container mx-auto flex items-center justify-between py-2 px-4 md:px-2">
 
-                {/* Logo */}
-                <a href="#header">
-                    <img src="/images/logo.png" alt="Logo" className="h-10" />
-                </a>
+                {/* Logo + Hamburger */}
+                <div className="flex items-center justify-between w-full md:w-auto">
+                    {/* Logo */}
+                    <a href="#header">
+                        <img src="/images/logo.png" alt="Logo" className="h-10" />
+                    </a>
+                </div>
 
                 {/* Menu Desktop */}
                 <ul className="hidden md:flex space-x-8 text-gray-400 text-lg items-center">

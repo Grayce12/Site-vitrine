@@ -32,9 +32,10 @@ h2 {
 
 /* Styles pour l'élément menu-icon */
 #menu-icon {
-    width: 45px;
+    width: 54px;
     height: 50px;
     color: black;
+    font-weight: 700
 }
 
 #product-choose {
@@ -75,6 +76,12 @@ h2 {
     height: auto;
 }
 
+#how-it-works {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+}
+
 /* Espacement pour les très grands écrans (moniteurs 4K) */
 @media (min-width: 1280px) {
     #hero {
@@ -104,8 +111,8 @@ h2 {
     h2 {
         font-family: 'Poppins', sans-serif;
         font-weight: 400px;
-        font-size: 56px;
-        letter-spacing: 1px;
+        font-size: 55px;
+        letter-spacing: 0px;
     }
 
     #play-video {
@@ -140,6 +147,7 @@ h2 {
         font-family: 'Poppins', sans-serif;
         font-weight: 300;
         font-size: 23px;
+        letter-spacing:0px;
     }
 
     #apple-watch2 {
@@ -148,7 +156,7 @@ h2 {
     }
 
 
-   #arrow-right {
+    #arrow-right {
         width: 40px;
         height: 40px;
     }

@@ -1,11 +1,12 @@
 export default function Benefits() {
     return (
-        <section id="features" className="py-20 bg-white">
+        <section id="features" className="py-30 bg-white">
             <div className="container mx-auto text-center">
                 {/* Section Header */}
-                <div className="section-header mb-10">
-                    <h2 className="text-6xl text-gray-700 font-semibold mb-4">THE BENEFITS</h2>
-                    <p className="text-2xl text-gray-400 mb-4">
+                <div className="section-header mb-25">
+                    <h2 className="text-6xl text-gray-700 font-semibold mb-4 opacity-110
+                    ">THE BENEFITS</h2>
+                    <p className="text-2xl text-gray-400 mb-4" id="description">
                         List out your product’s benefits here. A small description about what it is <br />and how it helps the user.
                     </p>
                 </div>
@@ -17,7 +18,7 @@ export default function Benefits() {
                         <div className="icon mb-4">
                             <i className="fa fa-location-arrow text-4xl text-blue-600"></i>
                         </div>
-                        <h4 className="text-xl font-semibold">GPS Tracking</h4>
+                        <h4 className="text-2xl font-semibold text-gray-900 ">GPS Tracking</h4>
                         <p className="text-gray-600">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
                         </p>
@@ -28,7 +29,7 @@ export default function Benefits() {
                         <div className="icon mb-4">
                             <i className="fa fa-heartbeat text-4xl text-red-600"></i>
                         </div>
-                        <h4 className="text-xl font-semibold">Heartbeat Analysis</h4>
+                        <h4 className="text-2xl font-semibold text-gray-900">Heartbeat Analysis</h4>
                         <p className="text-gray-600">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
                         </p>
