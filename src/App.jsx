@@ -9,6 +9,7 @@ import SplitColumns from './components/SplitColumns';
 import Reviews from './components/Reviews';
 import LeftRightContent from "./components/LeftRightContent";
 import OurCollection from './components/OurCollection';
+import TheWatch from './components/TheWatch';
 
 
 function App() {
@@ -21,10 +22,11 @@ function App() {
       <Benefits />
       <LeftRightContent />
       <OurCollection />
-      <Timeline />
-      <Team />
+      <TheWatch />
       <SplitColumns />
+      <Timeline />
       <Reviews />
+      <Team />
     </div>
   );
 }
