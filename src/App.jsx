@@ -10,6 +10,7 @@ import Reviews from './components/Reviews';
 import LeftRightContent from "./components/LeftRightContent";
 import OurCollection from './components/OurCollection';
 import TheWatch from './components/TheWatch';
+import Faqs from './components/Faqs';
 
 
 function App() {
@@ -24,9 +25,10 @@ function App() {
       <OurCollection />
       <TheWatch />
       <SplitColumns />
-      <Timeline />
       <Reviews />
+      <Faqs />
       <Team />
+      <Timeline />
     </div>
   );
 }
