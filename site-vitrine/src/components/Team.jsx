@@ -1,54 +1,61 @@
-export default function Team() {
+// Données par défaut pour l'équipe
+const defaultTeamMembers = [
+    {
+        name: "Gary Elliott",
+        role: "Co-Founder and CEO",
+        image: "/images/team-1.jpg",
+    },
+    {
+        name: "Jeffrey Allen",
+        role: "Co-Founder and CTO",
+        image: "/images/team-2.jpg",
+    },
+    {
+        name: "Sara Mendez",
+        role: "Lead Developer, Hacker",
+        image: "/images/team-3.jpg",
+    },
+    {
+        name: "Albert Castro",
+        role: "3D Designer & Prototyper",
+        image: "/images/team-4.jpg",
+    },
+];
+
+const TeamMember = ({ name, role, image }) => (
+    <div className="flex flex-col items-center text-center bg-white overflow-hidden mb-30">
+        <img
+            src={image}
+            alt={name}
+            className="w-full h-70 object-cover mb-8"
+        />
+        <h4 className="text-xl font-semibold text-gray-700">{name}</h4>
+        <h5 className="text-gray-400 pb-5">{role}</h5>
+    </div>
+);
+
+export default function Team({ members = defaultTeamMembers }) {
     return (
-        <section id="team" className="py-20 bg-gray-100">
-            <div className="container mx-auto text-center">
+        <section className="py-30 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-6">
                 {/* Section Header */}
-                <div className="section-header mb-10">
-                    <h2 className="text-4xl font-semibold mb-4">Meet the Team</h2>
-                    <p className="text-lg text-gray-600">
-                        We are a small group of inventors, hackers, and designers from different parts of the world on a mission.
+                <div className="text-center mb-16">
+                    <h2 className="text-5xl font-bold text-gray-700 mb-4">Meet the Team</h2>
+                    <p 
+                        id="description"
+                    className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed mb-30">
+                        We are a small group of inventors, hackers and designers from the different parts of the world on a mission.
                     </p>
                 </div>
 
-                {/* Team Members */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {/* Member 1 */}
-                    <div className="team-member text-center">
-                        <div className="member-image mb-4">
-                            <img src="/images/team-1.jpg" alt="Gary Elliott" className="rounded-full w-32 h-32 mx-auto" />
-                        </div>
-                        <h4 className="text-xl font-semibold">Gary Elliott</h4>
-                        <h5 className="text-gray-500">Co-Founder and CEO</h5>
-                    </div>
-
-                    {/* Member 2 */}
-                    <div className="team-member text-center">
-                        <div className="member-image mb-4">
-                            <img src="/images/team-2.jpg" alt="Jeffrey Allen" className="rounded-full w-32 h-32 mx-auto" />
-                        </div>
-                        <h4 className="text-xl font-semibold">Jeffrey Allen</h4>
-                        <h5 className="text-gray-500">Co-Founder and CTO</h5>
-                    </div>
-
-                    {/* Member 3 */}
-                    <div className="team-member text-center">
-                        <div className="member-image mb-4">
-                            <img src="/images/team-3.jpg" alt="Sara Mendez" className="rounded-full w-32 h-32 mx-auto" />
-                        </div>
-                        <h4 className="text-xl font-semibold">Sara Mendez</h4>
-                        <h5 className="text-gray-500">Lead Developer, Hacker</h5>
-                    </div>
-
-                    {/* Member 4 */}
-                    <div className="team-member text-center">
-                        <div className="member-image mb-4">
-                            <img src="/images/team-4.jpg" alt="Albert Castro" className="rounded-full w-32 h-32 mx-auto" />
-                        </div>
-                        <h4 className="text-xl font-semibold">Albert Castro</h4>
-                        <h5 className="text-gray-500">3D Designer & Prototyper</h5>
-                    </div>
+                {/* Team Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {members.map((member, index) => (
+                        <TeamMember key={index} {...member} />
+                    ))}
                 </div>
             </div>
         </section>
     );
 }
+

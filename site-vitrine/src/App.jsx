@@ -7,6 +7,11 @@ import Timeline from './components/Timeline';
 import Team from './components/Team';
 import SplitColumns from './components/SplitColumns';
 import Reviews from './components/Reviews';
+import LeftRightContent from "./components/LeftRightContent";
+import OurCollection from './components/OurCollection';
+import TheWatch from './components/TheWatch';
+import Faqs from './components/Faqs';
+
 
 function App() {
   return (
@@ -16,10 +21,14 @@ function App() {
       <Product />
       <HowItWorks />
       <Benefits />
-      <Timeline />
-      <Team />
+      <LeftRightContent />
+      <OurCollection />
+      <TheWatch />
       <SplitColumns />
       <Reviews />
+      <Faqs />
+      <Team />
+      <Timeline />
     </div>
   );
 }
