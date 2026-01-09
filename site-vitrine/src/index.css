@@ -174,18 +174,10 @@ h2 {
         letter-spacing: 0px;
     }
 
-    #splitcolumns {
+    #split-columns {
         font-family: 'Poppins', sans-serif;
         font-weight: 800;
-        font-size: 40px;
-        text-transform: none;
-    }
-
-    #quote {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 300;
-        font-size: 18px;
-        letter-spacing: 0.5;
+        font-size: 50px;
     }
 
 }

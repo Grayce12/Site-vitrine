@@ -23,9 +23,9 @@ const SplitColumn = ({ title, text, image, imageLeft = true }) => (
         <div className="md:w-1/2 lg:w-1/2 h-full">
             <img src={image} alt={title} className="w-full h-full object-cover" />
         </div>
-        <div className={`md:w-1/2 lg:w-1/2 p-12 flex flex-col justify-center h-full ${imageLeft ? 'text-left px-20 mt-40' : 'text-center px-30 mt-40'}`}>
-            <h2 id="splitcolumns" className={`${imageLeft ? 'text-5xl text-left pl-5' : 'text-4xl text-left pl-35'} font-bold text-gray-700 mb-6`}>{title}</h2>
-            <p className={`${imageLeft ? 'text-gray-300 text-xl max-w-xl px-5' : 'text-gray-300 text-xl max-w-xl mx-auto text-left px-5'} leading-loose`}>{text}</p>
+        <div className="md:w-1/2 lg:w-1/2 p-8 flex flex-col justify-center mt-40 h-full">
+            <h2 id="spitcolums" className="text-4xl font-bold text-gray-700">{title}</h2>
+            <p className="text-gray-500 text-xl leading-relaxed">{text}</p>
         </div>
     </div>
 );

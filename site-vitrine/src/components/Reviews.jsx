@@ -1,71 +1,18 @@
-import { RiDoubleQuotesL } from "react-icons/ri";
+const ReviewItem = ({ quote, source }) => (
+    <div 
+    id="reviews"
+    className="flex flex-col items-center">
+        <div className="text-6xl text-gray-300 mb-4">"</div>
+        <p className="text-gray-600 text-base leading-relaxed mb-6 h-32 flex items-center">
+            {quote}
+        </p>
+        <p className="text-gray-700 font-semibold text-lg">{source}</p>
+    </div>
+);
 
-
-const SOURCE_STYLES = {
-    "TECH COMPANY": {
-        className: "font-montserrat font-extrabold uppercase tracking-widest text-gray-500",
-        style: { fontFamily: "Montserrat", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.1em" }
-    },
-    "SMART REVIEW": {
-        className: "font-playfair font-semibold tracking-wide text-gray-400",
-        style: { fontFamily: "Playfair Display", fontWeight: "600", letterSpacing: "0.05em" }
-    },
-    "TechLaunch": {
-        className: "font-playfair font-semibold tracking-wide text-gray-400",
-    },
-    "MOBWORLD": {
-        className: "font-montserrat font-bold uppercase tracking-wider text-gray-500",
-    },
-    "FIRST POST": {
-        className: "font-montserrat font-semibold uppercase tracking-wide text-gray-500",
-    },
-    "STARTUP 100": {
-        className: "font-montserrat font-extrabold uppercase tracking-widest text-gray-500",
-    },
-};
-
-
-const ReviewItem = ({ quote, source }) => {
-    const sourceStyle = SOURCE_STYLES[source];
-
-    return (
-        <div className="flex flex-col items-center">
-            <RiDoubleQuotesL className="text-6xl text-gray-300 mb-4" />
-
-            <p className="text-gray-700 text-lg leading-relaxed mb-6 text-center max-w-xs">
-                {quote}
-            </p>
-
-            <p className={`text-lg ${sourceStyle?.className}`}>
-                {source}
-            </p>
-        </div>
-    );
-};
-
-
-const FeaturedSource = ({ name }) => {
-    if (name === 'TECH COMPANY') {
-        return (
-            <div className="flex items-center gap-3">
-                <span className="bg-gray-700 text-white font-bold px-3 py-1 text-sm">TECH</span>
-                <span className="text-gray-500 font-semibold tracking-wide">COMPANY</span>
-            </div>
-        );
-    }
-
-    if (name === 'SMART REVIEW') {
-        return (
-            <div className="text-gray-300 font-serif text-xl tracking-widest">SMART REVIEW</div>
-        );
-    }
-
-    // Default style (e.g., TechLaunch, MOBWORLD...)
-    return (
-        <div className="text-gray-500 font-semibold text-lg">{name}</div>
-    );
-};
-
+const FeaturedSource = ({ name }) => (
+    <p className="text-gray-600 font-semibold text-lg">{name}</p>
+);
 
 export default function Reviews() {
     const reviewsData = [
@@ -93,20 +40,18 @@ export default function Reviews() {
     ];
 
     return (
-        <section 
-        id="reviews"
-        className="py-35 bg-gray-50">
+        <section className="py-20 bg-gray-50">
             <div className="max-w-6xl mx-auto px-6">
                 {/* Header */}
-                <div className="text-center mb-27">
+                <div className="text-center mb-16">
                     <h2 className="text-5xl font-bold text-gray-700 mb-6">REVIEWS</h2>
-                    <p id="description1" className="text-gray-400 text-lg max-w-3xl mx-auto">
-                        Don't take our word. See what our experts says about the watch. We <br /> have got over 1000s of positive reviews.
+                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                        Don't take our word for it. See what our experts says about the watch. We have got over 1000s of positive reviews.
                     </p>
                 </div>
 
                 {/* Reviews Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-y-6 gap-x-8 mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
                     {reviewsData.map((review, index) => (
                         <ReviewItem key={index} quote={review.quote} source={review.source} />
                     ))}
