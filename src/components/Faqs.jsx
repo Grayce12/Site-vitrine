@@ -1,7 +1,7 @@
-const FaqItem = ({ question, answer }) => (
-    <div>
-        <h3 className="text-gray-700 font-semibold text-lg mb-3">{question}</h3>
-        <p className="text-gray-500 text-base leading-relaxed">{answer}</p>
+const FaqItem = ({ question, answer, isFirst }) => (
+    <div className={isFirst ? "pb-8" : ""}>
+        <h3 id="description" className="text-gray-700 font-extrabold text-lg mb-1">{question}</h3>
+        <p className="text-gray-500 text-md leading-relaxed">{answer}</p>
     </div>
 );
 
@@ -30,13 +30,13 @@ const Faqs = () => {
     ];
 
     return (
-        <section className="py-20 bg-white">
+        <section className="py-27 bg-white">
             <div className="max-w-6xl mx-auto px-6">
                 {/* Header */}
-                <div className="text-center mb-16">
-                    <h2 className="text-5xl font-bold text-gray-700 mb-6">FAQ</h2>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        Got questions? We've got answers. If you have some other questions, feel free to send us an email to{" "}
+                <div className="text-center mb-25">
+                    <h2 className="text-5xl font-bold text-gray-700 mb-4">FAQ</h2>
+                    <p id="description" className="text-gray-400 text-lg max-w-4xl mx-auto">
+                        Got questions? We've got answers. If you have some other questions, <br />feel free to send us an email to{" "}
                         <a href="mailto:hello@product.com" className="text-blue-500 hover:underline">
                             hello@product.com
                         </a>
@@ -44,9 +44,9 @@ const Faqs = () => {
                 </div>
 
                 {/* FAQ Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-9xl">
                     {faqsData.map((faq, index) => (
-                        <FaqItem key={index} question={faq.question} answer={faq.answer} />
+                        <FaqItem key={index} question={faq.question} answer={faq.answer} isFirst={index === 0} />
                     ))}
                 </div>
             </div>

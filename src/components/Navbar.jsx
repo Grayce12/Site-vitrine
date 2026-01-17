@@ -25,7 +25,7 @@ export default function Navbar() {
                 <div className="flex items-center justify-between w-full md:w-auto">
                     {/* Logo */}
                     <a href="#header">
-                        <img src="/images/logo.png" alt="Logo" className="h-10" />
+                        <img src="/images/logo.png" alt="Logo" className="h-12" />
                     </a>
                 </div>
 
