@@ -15,7 +15,7 @@ import TechSpecs from './components/TechSpecs';
 import MobileApp from './components/MobileApp';
 import Newsletter from './components/Newsletter';
 import Contact from './components/Contact';
-
+import Footer from './components/Footer';
 
 
 
@@ -39,6 +39,7 @@ function App() {
       <MobileApp />
       <Newsletter />
       <Contact />
+      <Footer />
     </div>
   );
 }

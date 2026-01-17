@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaLock } from 'react-icons/fa';
 
 const Newsletter = () => {
     const [email, setEmail] = useState('');
@@ -31,7 +32,8 @@ const Newsletter = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter Your Email Address"
                             required
-                            className="flex-1 px-6 py-10 bg-gray-100 text-gray-700 placeholder-gray-400 focus:outline-none"
+                            className="flex-1 px-6 py-10 bg-gray-100 border border-gray-200 text-gray-700 placeholder-gray-300 focus:outline-none"
+                            id='description'
                         />
                         <button
                             type="submit"
@@ -46,7 +48,8 @@ const Newsletter = () => {
                             <p className="text-gray-600 font-semibold">Almost finished. Please check your email and verify.</p>
                         </div>
                     ) : (
-                        <p className="text-center text-gray-400 text-sm mt-6">
+                        <p className="text-center text-gray-400 text-base mt-6 flex items-center justify-center gap-2">
+                            <FaLock className="text-gray-400 text-sm" />
                             No Spam. We Promise. Unsubscribe anytime.
                         </p>
                     )}
