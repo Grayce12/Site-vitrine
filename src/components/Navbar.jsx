@@ -1,24 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [mounted] = useState(true);
+   
 
-    // Détecter le scroll pour changer le background
     useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 10) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        const handleScroll = () => setIsScrolled(window.scrollY > 10);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
-        <header className={`w-full fixed top-0 left-0 z-60 py-2 md:py-3 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
+        <header
+            className={`
+        w-full fixed top-0 left-0 z-60 py-2 md:py-3 transition-all duration-300
+        ${isScrolled ? "bg-white shadow-lg" : "bg-transparent"}
+        ${mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}
+      `}
+            style={{ willChange: "transform, opacity" }}
+        >
             <nav className="container mx-auto flex items-center justify-between py-2 px-4 md:px-2">
 
                 {/* Logo + Hamburger */}
@@ -59,9 +62,13 @@ export default function Navbar() {
                 </ul>
 
                 {/* Call to Action */}
-                <a id="product-choose" href="#product-choose" className="hidden md:block bg-orange-500 text-white text-lg px-8 py-3 rounded-full hover:bg-gray-600 transition duration-300 ml-4">
+                <button
+                    id="product-choose"
+                    
+                    className="hidden md:block bg-orange-500 text-white text-lg px-8 py-3 rounded-full hover:bg-gray-600 transition duration-300 ml-4"
+                >
                     PRE-ORDER NOW
-                </a>
+                </button>
 
                 {/* Burger menu mobile */}
                 <button className="md:hidden ml-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -91,13 +98,17 @@ export default function Navbar() {
                         </li>
                         <li><a href="#contact" className="block px-2 py-2 hover:bg-gray-100 rounded">CONTACT</a></li>
                         <li>
-                            <a href="#product-choose" className="block bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-gray-600 transition duration-300 text-center">
+                            <button
+                                className="w-full block bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-gray-600 transition duration-300 text-center"
+                            >
                                 PRE-ORDER NOW
-                            </a>
+                            </button>
                         </li>
                     </ul>
                 </div>
             )}
+
+            
         </header>
     );
 }

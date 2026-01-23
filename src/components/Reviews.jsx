@@ -3,7 +3,6 @@ import { RiDoubleQuotesL } from "react-icons/ri";
 
 const ReviewItem = ({ quote, image }) => (
     <div
-        id="reviews"
         className="flex flex-col items-center">
         <div className="text-7xl text-gray-300 mb-1">
             <RiDoubleQuotesL />
@@ -45,7 +44,7 @@ export default function Reviews() {
     ];
 
     return (
-        <section className="py-32 bg-gray-50">
+        <section id="reviews" className="py-32 bg-gray-50">
             <div className="max-w-6xl mx-auto px-6">
                 {/* Header */}
                 <div className="text-center mb-20">

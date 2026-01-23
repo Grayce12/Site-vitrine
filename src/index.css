@@ -105,6 +105,7 @@ h2 {
         font-weight: 400px;
         letter-spacing: -5px;
         font-size: 90px;
+        text-transform: none;
         /* Moyen pour les écrans moyens */
     }
 
@@ -196,6 +197,12 @@ h2 {
 
 }
 
+#contact-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 31px;
+}
+
 /* Styles spécifiques pour les paragraphes */
 p {
     font-family: 'Poppins', sans-serif;
@@ -218,10 +225,14 @@ a {
     height: 40px;
 }
 
-/* styles pour l'élément table */
-/* Masque pour masquer le fond gris */
-#table {
-    font-size: medium;
-    mask-image: radial-gradient(circle, rgba(255, 255, 255, 1) 60%, rgba(0, 0, 0, 1) 100%);
-    -webkit-mask-image: radial-gradient(circle, rgba(255, 255, 255, 1) 60%, rgba(0, 0, 0, 1) 100%);
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }

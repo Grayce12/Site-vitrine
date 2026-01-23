@@ -30,7 +30,7 @@ const Footer = () => {
                                 <li key={index}>
                                     <a
                                         href="#"
-                                        className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-300 text-white hover:bg-blue-400 transition"
+                                        className="flex items-center justify-center w-15 h-15 rounded-full bg-blue-300 text-white hover:bg-gray-600 transition"
                                         aria-label={social.label}
                                     >
                                         <Icon className="text-3xl" />
@@ -49,7 +49,7 @@ const Footer = () => {
                                 <li key={index}>
                                     <a
                                         href={link.href}
-                                        className="text-blue-300 hover:text-blue-400 transition text-sm"
+                                        className="text-blue-300 hover:text-gray-400 transition text-lg"
                                     >
                                         {link.label}
                                     </a>
@@ -58,7 +58,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <div className="text-center text-blue-300 text-sm">
+                    <div className="text-center text-gray-400 text-base">
                         <p>Copyright © 2016. Proland. All rights reserved</p>
                     </div>
                 </div>

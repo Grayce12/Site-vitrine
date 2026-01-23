@@ -37,7 +37,7 @@ const Newsletter = () => {
                         />
                         <button
                             type="submit"
-                            className="px-10 py-4 rounded-r bg-blue-600 hover:bg-blue-700 text-white font-semibold transition flex items-center justify-center"
+                            className="px-10 py-4 rounded-r bg-blue-500 hover:bg-gray-600 text-white font-semibold transition flex items-center justify-center"
                         >
                             <img src="/images/right-arrow_10513666.png" alt="Subscribe" className="w-15 h-12 brightness-0 invert" />
                         </button>

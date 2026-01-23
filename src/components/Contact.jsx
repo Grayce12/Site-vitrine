@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const Contact = () => {
     const [showForm, setShowForm] = useState(false);
@@ -10,6 +11,16 @@ const Contact = () => {
         message: ''
     });
     const [submitMessage, setSubmitMessage] = useState('');
+
+    const mapContainerStyle = {
+        width: '100%',
+        height: '600px'
+    };
+
+    const center = {
+        lat: 37.3818288,
+        lng: -122.0636325
+    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -28,47 +39,61 @@ const Contact = () => {
     };
 
     return (
-        <section className="py-32 bg-gray-50">
-            <div className="max-w-6xl mx-auto px-6">
-                <div className="max-w-md mx-auto">
+        <section id="contact" className="relative w-full" style={{ height: '600px' }}>
+            {/* Map Background */}
+            <div className="absolute inset-0 w-full h-full">
+                <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+                    <GoogleMap
+                        mapContainerStyle={mapContainerStyle}
+                        center={center}
+                        zoom={15}
+                    >
+                        <Marker position={center} />
+                    </GoogleMap>
+                </LoadScript>
+            </div>
+
+            {/* Content Overlay - Centered */}
+            <div className="absolute inset-0 flex items-center justify-center z-10">
+                <div className="max-w-lg w-full px-1">
                     {!showForm ? (
                         // Contact Box
-                        <div className="bg-white rounded-lg shadow-lg p-8">
-                            <h2 className="text-4xl font-bold text-gray-800 mb-8">Get in Touch</h2>
+                        <div className="bg-white shadow-lg p-10">
+                            <h2 id="contact-title" className=" font-bold text-gray-700 mb-8">Get in Touch</h2>
 
                             <ul className="space-y-6 mb-8">
                                 {/* Address */}
                                 <li className="flex gap-4">
-                                    <FaMapMarkerAlt className="text-blue-500 text-xl mt-1 flex-shrink-0" />
+                                    <FaMapMarkerAlt className="text-gray-400 text-lg mt-1 flex-shrink-0" />
                                     <div>
-                                        <p className="text-gray-700 font-semibold">523 Sylvan Ave, 5th Floor</p>
-                                        <p className="text-gray-600">Mountain View, CA 94041 USA</p>
+                                        <p className="text-gray-500 font-semibold">523 Sylvan Ave, 5th Floor</p>
+                                        <p className="text-gray-500">Mountain View, CA 94041 USA</p>
                                     </div>
                                 </li>
 
                                 {/* Phone */}
                                 <li className="flex gap-4">
-                                    <FaPhone className="text-blue-500 text-xl mt-1 flex-shrink-0" />
+                                    <FaPhone className="text-gray-400 text-lg mt-1 flex-shrink-0" />
                                     <div>
-                                        <p className="text-gray-700 font-semibold">+1 (234) 56789</p>
-                                        <p className="text-gray-600">+1 987 654 3210</p>
+                                        <p className="text-gray-500 font-semibold">+1 (234) 56789</p>
+                                        <p className="text-gray-500">+1 987 654 3210</p>
                                     </div>
                                 </li>
 
                                 {/* Email */}
                                 <li className="flex gap-4">
-                                    <FaEnvelope className="text-blue-500 text-xl mt-1 flex-shrink-0" />
+                                    <FaEnvelope className="text-gray-400 text-lg mt-1 flex-shrink-0" />
                                     <div>
-                                        <p className="text-gray-700 font-semibold">support@watchland.com</p>
+                                        <p className="text-gray-500 font-semibold">support@watchland.com</p>
                                     </div>
                                 </li>
                             </ul>
 
                             <button
                                 onClick={() => setShowForm(true)}
-                                className="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded transition"
+                                className="w-full px-6 py-5 bg-blue-500 hover:bg-gray-600 text-white text-lg font-semibold transition"
                             >
-                                Contact Us
+                                CONTACT US
                             </button>
                         </div>
                     ) : (
@@ -127,7 +152,7 @@ const Contact = () => {
 
                                 <button
                                     type="submit"
-                                    className="w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded transition"
+                                    className="w-full px-6 py-3 bg-blue-500 hover:bg-gray-600 text-white font-semibold rounded transition"
                                 >
                                     Send Message
                                 </button>
