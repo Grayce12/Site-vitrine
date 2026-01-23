@@ -11,6 +11,14 @@ import LeftRightContent from "./components/LeftRightContent";
 import OurCollection from './components/OurCollection';
 import TheWatch from './components/TheWatch';
 import Faqs from './components/Faqs';
+import TechSpecs from './components/TechSpecs';
+import MobileApp from './components/MobileApp';
+import Newsletter from './components/Newsletter';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+
+
+
 
 
 function App() {
@@ -27,8 +35,13 @@ function App() {
       <SplitColumns />
       <Reviews />
       <Faqs />
-      <Team />
+      <TechSpecs />
       <Timeline />
+      <Team />
+      <MobileApp />
+      <Newsletter />
+      <Contact />
+      <Footer />
     </div>
   );
 }
