@@ -25,6 +25,7 @@ import Footer from './components/Footer';
 
 function App() {
   const [isPreOrderOpen, setIsPreOrderOpen] = useState(false);
+
   const pageClassName = isPreOrderOpen
     ? "pointer-events-none select-none blur-sm opacity-40"
     : "";
@@ -58,6 +59,7 @@ function App() {
         <Contact />
         <Footer />
       </div>
+
       <PreOrderModal
         isOpen={isPreOrderOpen}
         onClose={() => setIsPreOrderOpen(false)}
