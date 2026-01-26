@@ -1,6 +1,6 @@
 import Reveal from "./Reveal"; // adapte le chemin
 
-export default function Hero() {
+export default function Hero({ onPreOrder }) {
     return (
         <section
             id="header"
@@ -61,9 +61,10 @@ export default function Hero() {
             </Reveal>
 
             <Reveal animation="fadeInUp" delay="0.42s" className="lg:hidden">
-                <a
+                <button
                     id="product-choose2"
-                    href="#product-choose"
+                    type="button"
+                    onClick={onPreOrder}
                     className="
             bg-orange-500 text-white
             px-18 py-4
@@ -75,7 +76,7 @@ export default function Hero() {
           "
                 >
                     PRE-ORDER NOW
-                </a>
+                </button>
             </Reveal>
 
             <Reveal animation="fadeInUp" delay="0.55s">
@@ -92,4 +93,3 @@ export default function Hero() {
         </section>
     );
 }
-

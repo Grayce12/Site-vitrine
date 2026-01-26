@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 
 
-export default function Navbar() {
+export default function Navbar({ onPreOrder }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [mounted] = useState(true);
+
+    const handlePreOrder = () => {
+        setIsMenuOpen(false);
+        if (onPreOrder) {
+            onPreOrder();
+        }
+    };
    
 
     useEffect(() => {
@@ -64,7 +71,8 @@ export default function Navbar() {
                 {/* Call to Action */}
                 <button
                     id="product-choose"
-                    
+                    type="button"
+                    onClick={handlePreOrder}
                     className="hidden md:block bg-orange-500 text-white text-lg px-8 py-3 rounded-full hover:bg-gray-600 transition duration-300 ml-4"
                 >
                     PRE-ORDER NOW
@@ -99,6 +107,8 @@ export default function Navbar() {
                         <li><a href="#contact" className="block px-2 py-2 hover:bg-gray-100 rounded">CONTACT</a></li>
                         <li>
                             <button
+                                type="button"
+                                onClick={handlePreOrder}
                                 className="w-full block bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-gray-600 transition duration-300 text-center"
                             >
                                 PRE-ORDER NOW
@@ -112,4 +122,3 @@ export default function Navbar() {
         </header>
     );
 }
-
