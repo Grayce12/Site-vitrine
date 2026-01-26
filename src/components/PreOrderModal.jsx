@@ -14,21 +14,37 @@ const colorOptions = [
     { name: "Green", className: "bg-emerald-400", ring: "ring-emerald-400" },
 ];
 
+const sizeOptions = ["M", "L", "XL"];
+
 export default function PreOrderModal({ isOpen, onClose }) {
-    const [isCheckout, setIsCheckout] = useState(false);
-    const [activeSlide, setActiveSlide] = useState(2);
     const checkoutSlideIndex = 1;
 
-    // ✅ Reset au moment de fermer (pas dans un useEffect)
-    const handleClose = () => {
+    const [isCheckout, setIsCheckout] = useState(false);
+    const [activeSlide, setActiveSlide] = useState(2);
+
+    const [selectedColor, setSelectedColor] = useState(colorOptions[0].name);
+    const [quantity, setQuantity] = useState(1);
+    const [selectedSize, setSelectedSize] = useState(sizeOptions[0]);
+
+    const reset = () => {
         setIsCheckout(false);
         setActiveSlide(2);
+        setSelectedColor(colorOptions[0].name);
+        setQuantity(1);
+        setSelectedSize(sizeOptions[0]);
+    };
+
+    const handleClose = () => {
+        reset();
         onClose();
     };
 
-    // ✅ L’effet ne sert qu’au timer (système externe)
+    const handleQuantityChange = (nextValue) => {
+        setQuantity(Math.max(1, nextValue));
+    };
+
     useEffect(() => {
-        if (!isOpen || isCheckout) return undefined;
+        if (!isOpen || isCheckout) return;
 
         const interval = setInterval(() => {
             setActiveSlide((current) => (current + 1) % watchSlides.length);
@@ -59,20 +75,26 @@ export default function PreOrderModal({ isOpen, onClose }) {
                     </button>
 
                     <div className="grid gap-0 lg:grid-cols-[1fr_1.1fr]">
+                        {/* Left: carousel */}
                         <div className="flex flex-col items-center justify-center bg-gray-50 px-8 py-12">
-                            <img
-                                src={
-                                    isCheckout
-                                        ? watchSlides[checkoutSlideIndex].src
-                                        : watchSlides[activeSlide].src
-                                }
-                                alt={
-                                    isCheckout
-                                        ? watchSlides[checkoutSlideIndex].alt
-                                        : watchSlides[activeSlide].alt
-                                }
-                                className="w-full max-w-[18rem] drop-shadow-2xl sm:max-w-xs"
-                            />
+                            <div className="relative w-full max-w-[18rem] overflow-hidden sm:max-w-xs">
+                                <div
+                                    className="flex transition-transform duration-700 ease-out"
+                                    style={{
+                                        transform: `translateX(-${(isCheckout ? checkoutSlideIndex : activeSlide) * 100
+                                            }%)`,
+                                    }}
+                                >
+                                    {watchSlides.map((slide) => (
+                                        <img
+                                            key={slide.src}
+                                            src={slide.src}
+                                            alt={slide.alt}
+                                            className="w-full shrink-0 drop-shadow-2xl"
+                                        />
+                                    ))}
+                                </div>
+                            </div>
 
                             <div className="mt-8 flex items-center gap-3">
                                 {watchSlides.map((slide, index) => (
@@ -80,9 +102,7 @@ export default function PreOrderModal({ isOpen, onClose }) {
                                         key={slide.alt}
                                         type="button"
                                         aria-label={`Show ${slide.alt}`}
-                                        onClick={() => {
-                                            if (!isCheckout) setActiveSlide(index);
-                                        }}
+                                        onClick={() => !isCheckout && setActiveSlide(index)}
                                         className={`h-2 w-2 rounded-full transition ${(isCheckout ? checkoutSlideIndex : activeSlide) === index
                                             ? "bg-blue-500"
                                             : "bg-gray-300"
@@ -92,6 +112,7 @@ export default function PreOrderModal({ isOpen, onClose }) {
                             </div>
                         </div>
 
+                        {/* Right: content */}
                         <div className="flex flex-col justify-between gap-7 border-l border-gray-100 px-8 py-12">
                             {isCheckout ? (
                                 <>
@@ -105,16 +126,20 @@ export default function PreOrderModal({ isOpen, onClose }) {
                                         </button>
                                     </div>
 
-                                    <div className="space-y-5">
+                                    <form className="space-y-5">
                                         <div className="grid gap-4 sm:grid-cols-2">
                                             <input
                                                 type="text"
                                                 placeholder="First Name"
+                                                minLength={2}
+                                                required
                                                 className="h-12 w-full rounded-md border border-gray-200 px-4 text-sm text-gray-500 outline-none placeholder:text-gray-300 focus:border-blue-400"
                                             />
                                             <input
                                                 type="text"
                                                 placeholder="Last Name"
+                                                minLength={2}
+                                                required
                                                 className="h-12 w-full rounded-md border border-gray-200 px-4 text-sm text-gray-500 outline-none placeholder:text-gray-300 focus:border-blue-400"
                                             />
                                         </div>
@@ -122,17 +147,22 @@ export default function PreOrderModal({ isOpen, onClose }) {
                                         <input
                                             type="email"
                                             placeholder="Email Address"
+                                            required
                                             className="h-12 w-full rounded-md border border-gray-200 px-4 text-sm text-gray-500 outline-none placeholder:text-gray-300 focus:border-blue-400"
                                         />
 
                                         <input
                                             type="text"
                                             placeholder="Address Line 1"
+                                            minLength={4}
+                                            required
                                             className="h-12 w-full rounded-md border border-gray-200 px-4 text-sm text-gray-500 outline-none placeholder:text-gray-300 focus:border-blue-400"
                                         />
+
                                         <input
                                             type="text"
                                             placeholder="Address Line 2"
+                                            minLength={2}
                                             className="h-12 w-full rounded-md border border-gray-200 px-4 text-sm text-gray-500 outline-none placeholder:text-gray-300 focus:border-blue-400"
                                         />
 
@@ -140,11 +170,17 @@ export default function PreOrderModal({ isOpen, onClose }) {
                                             <input
                                                 type="text"
                                                 placeholder="State"
+                                                minLength={2}
+                                                required
                                                 className="h-12 w-full rounded-md border border-gray-200 px-4 text-sm text-gray-500 outline-none placeholder:text-gray-300 focus:border-blue-400"
                                             />
                                             <input
                                                 type="text"
                                                 placeholder="Zip Code"
+                                                inputMode="numeric"
+                                                pattern="\\d{4,10}"
+                                                title="Enter a valid ZIP code"
+                                                required
                                                 className="h-12 w-full rounded-md border border-gray-200 px-4 text-sm text-gray-500 outline-none placeholder:text-gray-300 focus:border-blue-400"
                                             />
                                         </div>
@@ -152,6 +188,7 @@ export default function PreOrderModal({ isOpen, onClose }) {
                                         <select
                                             className="h-12 w-full rounded-md border border-gray-200 px-4 text-sm text-gray-500 outline-none focus:border-blue-400"
                                             defaultValue=""
+                                            required
                                         >
                                             <option value="" disabled>
                                                 Choose a country
@@ -160,7 +197,7 @@ export default function PreOrderModal({ isOpen, onClose }) {
                                             <option>Belgium</option>
                                             <option>Switzerland</option>
                                         </select>
-                                    </div>
+                                    </form>
 
                                     <div className="border-t border-gray-100 pt-6">
                                         <button
@@ -215,12 +252,13 @@ export default function PreOrderModal({ isOpen, onClose }) {
                                                     Choose a color
                                                 </div>
                                                 <div className="mt-4 flex items-center gap-3">
-                                                    {colorOptions.map((color, index) => (
+                                                    {colorOptions.map((color) => (
                                                         <button
                                                             key={color.name}
                                                             type="button"
                                                             aria-label={color.name}
-                                                            className={`h-7 w-7 rounded-full ${color.className} ${index === 0
+                                                            onClick={() => setSelectedColor(color.name)}
+                                                            className={`h-7 w-7 rounded-full ${color.className} ${selectedColor === color.name
                                                                 ? `ring-4 ring-offset-2 ${color.ring}`
                                                                 : "ring-0"
                                                                 }`}
@@ -235,17 +273,19 @@ export default function PreOrderModal({ isOpen, onClose }) {
                                                 </div>
                                                 <div className="mt-4 flex items-center overflow-hidden rounded-md border border-gray-200 text-gray-600">
                                                     <span className="flex h-10 w-12 items-center justify-center text-sm">
-                                                        1
+                                                        {quantity}
                                                     </span>
                                                     <div className="flex flex-col border-l border-gray-200">
                                                         <button
                                                             type="button"
+                                                            onClick={() => handleQuantityChange(quantity + 1)}
                                                             className="h-5 w-8 text-lg leading-none text-gray-400 hover:text-gray-600"
                                                         >
                                                             +
                                                         </button>
                                                         <button
                                                             type="button"
+                                                            onClick={() => handleQuantityChange(quantity - 1)}
                                                             className="h-5 w-8 text-lg leading-none text-gray-400 hover:text-gray-600"
                                                         >
                                                             −
@@ -260,9 +300,15 @@ export default function PreOrderModal({ isOpen, onClose }) {
                                                 </div>
                                                 <button
                                                     type="button"
+                                                    onClick={() => {
+                                                        const currentIndex = sizeOptions.indexOf(selectedSize);
+                                                        const nextIndex = (currentIndex + 1) % sizeOptions.length;
+                                                        setSelectedSize(sizeOptions[nextIndex]);
+                                                    }}
                                                     className="mt-4 flex h-10 w-full items-center justify-between rounded-md border border-gray-200 px-4 text-sm font-semibold text-gray-600"
                                                 >
-                                                    M <span className="text-gray-400">▾</span>
+                                                    {selectedSize}
+                                                    <span className="text-gray-400">▾</span>
                                                 </button>
                                             </div>
                                         </div>

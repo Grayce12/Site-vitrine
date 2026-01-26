@@ -1,27 +1,23 @@
 import { useEffect, useState } from "react";
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Product from './components/Product';
-import HowItWorks from './components/HowItWorks';
-import Benefits from './components/Benefits';
-import Timeline from './components/Timeline';
-import Team from './components/Team';
-import SplitColumns from './components/SplitColumns';
-import Reviews from './components/Reviews';
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Product from "./components/Product";
+import HowItWorks from "./components/HowItWorks";
+import Benefits from "./components/Benefits";
 import LeftRightContent from "./components/LeftRightContent";
-import OurCollection from './components/OurCollection';
-import TheWatch from './components/TheWatch';
-import PreOrderModal from './components/PreOrderModal';
-import Faqs from './components/Faqs';
-import TechSpecs from './components/TechSpecs';
-import MobileApp from './components/MobileApp';
-import Newsletter from './components/Newsletter';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-
-
-
-
+import OurCollection from "./components/OurCollection";
+import TheWatch from "./components/TheWatch";
+import SplitColumns from "./components/SplitColumns";
+import Reviews from "./components/Reviews";
+import Faqs from "./components/Faqs";
+import TechSpecs from "./components/TechSpecs";
+import Timeline from "./components/Timeline";
+import Team from "./components/Team";
+import MobileApp from "./components/MobileApp";
+import Newsletter from "./components/Newsletter";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import PreOrderModal from "./components/PreOrderModal";
 
 function App() {
   const [isPreOrderOpen, setIsPreOrderOpen] = useState(false);
