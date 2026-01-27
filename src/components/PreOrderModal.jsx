@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 const watchSlides = [
     { src: "/images/the-watch.png", alt: "Blue smart watch" },
@@ -18,16 +18,15 @@ export default function PreOrderModal({ isOpen, onClose }) {
     const [isCheckout, setIsCheckout] = useState(false);
     const [activeSlide, setActiveSlide] = useState(2);
     const checkoutSlideIndex = 1;
-    const prevIsOpen = useRef(isOpen);
 
-    useEffect(() => {
-        if (prevIsOpen.current && !isOpen) {
-            setIsCheckout(false);
-            setActiveSlide(2);
-        }
-        prevIsOpen.current = isOpen;
-    }, [isOpen]);
+    // ✅ Reset au moment de fermer (pas dans un useEffect)
+    const handleClose = () => {
+        setIsCheckout(false);
+        setActiveSlide(2);
+        onClose();
+    };
 
+    // ✅ L’effet ne sert qu’au timer (système externe)
     useEffect(() => {
         if (!isOpen || isCheckout) return undefined;
 
@@ -43,7 +42,7 @@ export default function PreOrderModal({ isOpen, onClose }) {
     return (
         <section
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-6 py-8 backdrop-blur-sm"
-            onClick={onClose}
+            onClick={handleClose}
         >
             <div className="mx-auto w-full max-w-5xl">
                 <div
@@ -53,7 +52,7 @@ export default function PreOrderModal({ isOpen, onClose }) {
                     <button
                         type="button"
                         aria-label="Close"
-                        onClick={onClose}
+                        onClick={handleClose}
                         className="absolute right-6 top-6 text-2xl text-gray-300 transition hover:text-gray-500"
                     >
                         ×
@@ -290,4 +289,3 @@ export default function PreOrderModal({ isOpen, onClose }) {
         </section>
     );
 }
-
