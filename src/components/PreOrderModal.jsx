@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const watchSlides = [
     { src: "/images/the-watch.png", alt: "Blue smart watch" },
@@ -18,6 +18,15 @@ export default function PreOrderModal({ isOpen, onClose }) {
     const [isCheckout, setIsCheckout] = useState(false);
     const [activeSlide, setActiveSlide] = useState(2);
     const checkoutSlideIndex = 1;
+    const prevIsOpen = useRef(isOpen);
+
+    useEffect(() => {
+        if (prevIsOpen.current && !isOpen) {
+            setIsCheckout(false);
+            setActiveSlide(2);
+        }
+        prevIsOpen.current = isOpen;
+    }, [isOpen]);
 
     useEffect(() => {
         if (!isOpen || isCheckout) return undefined;
@@ -29,18 +38,12 @@ export default function PreOrderModal({ isOpen, onClose }) {
         return () => clearInterval(interval);
     }, [isOpen, isCheckout]);
 
-    const handleClose = () => {
-        setIsCheckout(false);
-        setActiveSlide(2);
-        onClose();
-    };
-
     if (!isOpen) return null;
 
     return (
         <section
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-6 py-8 backdrop-blur-sm"
-            onClick={handleClose}
+            onClick={onClose}
         >
             <div className="mx-auto w-full max-w-5xl">
                 <div
@@ -50,7 +53,7 @@ export default function PreOrderModal({ isOpen, onClose }) {
                     <button
                         type="button"
                         aria-label="Close"
-                        onClick={handleClose}
+                        onClick={onClose}
                         className="absolute right-6 top-6 text-2xl text-gray-300 transition hover:text-gray-500"
                     >
                         ×
@@ -82,8 +85,8 @@ export default function PreOrderModal({ isOpen, onClose }) {
                                             if (!isCheckout) setActiveSlide(index);
                                         }}
                                         className={`h-2 w-2 rounded-full transition ${(isCheckout ? checkoutSlideIndex : activeSlide) === index
-                                                ? "bg-blue-500"
-                                                : "bg-gray-300"
+                                            ? "bg-blue-500"
+                                            : "bg-gray-300"
                                             }`}
                                     />
                                 ))}
@@ -219,8 +222,8 @@ export default function PreOrderModal({ isOpen, onClose }) {
                                                             type="button"
                                                             aria-label={color.name}
                                                             className={`h-7 w-7 rounded-full ${color.className} ${index === 0
-                                                                    ? `ring-4 ring-offset-2 ${color.ring}`
-                                                                    : "ring-0"
+                                                                ? `ring-4 ring-offset-2 ${color.ring}`
+                                                                : "ring-0"
                                                                 }`}
                                                         />
                                                     ))}
@@ -287,3 +290,4 @@ export default function PreOrderModal({ isOpen, onClose }) {
         </section>
     );
 }
+
